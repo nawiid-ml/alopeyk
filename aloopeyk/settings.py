@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
+
+NESHAN_API_KEY = "web.47a257d4840d4ccba5ac2d0b4f8370b7"
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'user',
-    'rest_framework'
+    'request',
+    'rest_framework',
+
 ]
 
 MIDDLEWARE = [
@@ -127,3 +133,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# STATICFILES_DIRS = [
+#        os.path.join(BASE_DIR, 'static'),
+#        os.path.join(BASE_DIR, 'node_modules/django-leaflet/static'),
+#     ]
+
+

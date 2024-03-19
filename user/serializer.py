@@ -6,12 +6,20 @@ from django.utils import timezone
 
 
 class OTPSerializer(ModelSerializer):
+    """
+    Handles serialization of OTP model instances, specifically for the 'phone_number' field.
+    Likely used for retrieving the phone number associated with a given OTP.
+    """
     class Meta:
         model = OTP
         fields = ('phone_number',)
 
 
 class LoginUserSerializer(Serializer):
+    """
+    Handle user login process, involving phone number and OTP verification.
+    Upon successful validation, returns an access token for the authenticated user.
+    """    
     phone_number = serializers.CharField()
     code = serializers.CharField(
         style={'phone_number': 'code'}, trim_whitespace=True)
@@ -48,18 +56,27 @@ class LoginUserSerializer(Serializer):
 
 
 class SignupSerializer(ModelSerializer):
+    """
+    Handles serialization of User model instances, likely for user signup functionality.
+    """    
     class Meta:
         model = User
         fields = '__all__'
 
 
 class AddressSerializer(ModelSerializer):
+    """
+    Handles serialization of Address model instances.
+    """    
     class Meta:
         model = Address
         fields = '__all__'
 
 
 class DeliverySerializer(ModelSerializer):
+    """
+    Handles serialization of Deliver model instances, including nested serialization of origin and destination addresses.
+    """    
     origin = AddressSerializer()
     destination = AddressSerializer()
     
